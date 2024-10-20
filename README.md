@@ -10,7 +10,7 @@ I will be documenting my work here, algorithms that I aim to cover at first are:
 - Random Forests
 - Gradient-Boosted Trees/Forests
 - KNN Regression & Clustering
-- Perceptron Model
+- Perceptron Model (Done!)
 - Gradient Descent - variety of variants...
 
 and more to come!
