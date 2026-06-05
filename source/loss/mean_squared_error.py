@@ -46,3 +46,9 @@ def mean_squared_error(y: np.array, y_hat: np.array) -> np.array:
     # check dims first
     if y.shape != y_hat.shape:
         raise DimensionMismatchError("y.shape and y_hat.shape must be equal")
+    
+    # calculate error
+    n = y.shape[0]
+    error = (1 / n) * (y - y_hat)**2
+
+    return np.array(error)
