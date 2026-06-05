@@ -22,3 +22,27 @@ that the predicted values match the actual values. A perfect fit! Because the er
 is squared, predictions that are far from the target value get heavily penalised.
 """
 
+import numpy as np
+
+from source.exceptions.DimensionMismatchError import DimensionMismatchError
+
+def mean_squared_error(y: np.array, y_hat: np.array) -> np.array:
+    """
+    Calculate the mean squared error for vectors y and y_hat.
+
+    Parameters:
+    -----------
+    y (np.array): (n,) column vector of size n representing actual prediction target values
+    y_hat (np.array): (n,) column vector of size n representing predicted prediction target values
+
+    Returns:
+    -----------
+    (np.array): (1,) a scalar mean squared error value
+
+    Raises:
+    -----------
+    (DimensionMismatchError): if y and y_hat have different dimensions, this error gets raised
+    """
+    # check dims first
+    if y.shape != y_hat.shape:
+        raise DimensionMismatchError("y.shape and y_hat.shape must be equal")
