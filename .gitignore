@@ -1,2 +1,4 @@
 .venv/
 .spyproject/
+.pytest_cache/
+**/__pycache__
