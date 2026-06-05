@@ -4,7 +4,7 @@ Formula
 ------
 MSE   = (1 / n) * sum(y - y_hat)**2
 OR
-MSE   = (1 / n) * SSE 
+MSE   = (1 / n) * SSE
 
 where
 ------
@@ -23,10 +23,14 @@ is squared, predictions that are far from the target value get heavily penalised
 """
 
 import numpy as np
+import numpy.typing as npt
 
 from source.exceptions.DimensionMismatchError import DimensionMismatchError
 
-def mean_squared_error(y: np.array, y_hat: np.array) -> np.array:
+
+def mean_squared_error(
+    y: npt.NDArray[np.float64], y_hat: npt.NDArray[np.float64]
+) -> npt.NDArray[np.float64]:
     """
     Calculate the mean squared error for vectors y and y_hat.
 
@@ -46,9 +50,9 @@ def mean_squared_error(y: np.array, y_hat: np.array) -> np.array:
     # check dims first
     if y.shape != y_hat.shape:
         raise DimensionMismatchError("y.shape and y_hat.shape must be equal")
-    
+
     # calculate error
     n = y.shape[0]
-    error = (1 / n) * sum(y - y_hat)**2
+    error = (1 / n) * sum(y - y_hat) ** 2
 
     return np.array([error])
