@@ -106,6 +106,7 @@ class LinearRegression:
         for epoch in range(self.epochs_):
             # 1. make predictions using current weights
             preds = X.dot(self.coefficients_) + self.intercept_
+            preds = preds.reshape(1, -1)
             print(f"DEBUG: - Preds shape: {preds.shape}")
 
             # 2. compute the loss function with current weights and bias term
