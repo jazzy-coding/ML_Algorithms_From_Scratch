@@ -93,8 +93,11 @@ class LinearRegression:
         print(f"DEBUG: - y.shape = {y.shape}")
 
         # reshape arrays for processing
-        X = X.reshape(-1, 1)
-        y = y.reshape(-1, 1)
+        #X = X.reshape(-1, 1)
+        #y = y.reshape(-1, 1)
+        
+        print(f"DEBUG: - Reshaped X.shape = {X.shape}")
+        print(f"DEBUG: - Reshaped y.shape = {y.shape}")
 
         # initialise weights and biases randomly - drawing from a standard Gaussian distribution
         self.coefficients_ = np.random.normal(loc=0.0, scale=1.0, size=X.shape[1])
