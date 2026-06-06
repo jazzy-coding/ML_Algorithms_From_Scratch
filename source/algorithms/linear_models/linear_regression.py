@@ -109,8 +109,8 @@ class LinearRegression:
             error = self.loss_(y=y, y_hat=preds)
             
             # 3. update the weights using gradient descent
-            self.coefficients_ -= (self.learning_rate_ * -2.0 * error)
-            self.intercept_ -= (self.learning_rate_ * -2.0 * error)
+            self.coefficients_ += (self.learning_rate_ * -2.0 * error)
+            self.intercept_ += (self.learning_rate_ * -2.0 * error)
 
             # 4. log the epoch
             print(f"DEBUG: - Epoch: {epoch} - Loss: {error}")

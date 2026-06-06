@@ -53,6 +53,6 @@ def mean_squared_error(
 
     # calculate error
     n = y.shape[0]
-    error = (1 / n) * (sum(y - y_hat) ** 2)
+    error = (1 / 2*n) * (sum(y - y_hat) ** 2) # divide by 1/2n to make the math cleaner 
 
     return error
