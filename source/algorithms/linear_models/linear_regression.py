@@ -107,6 +107,7 @@ class LinearRegression:
 
             # 2. compute the loss function with current weights and bias term
             error = self.loss_(y=y, y_hat=preds)
+            print(f"DEBUG: - error.shape: {error.shape}")
             
             # 3. update the weights using gradient descent
             self.coefficients_ += (self.learning_rate_ * -2.0 * X.T.dot(error)) / X.shape[0]
