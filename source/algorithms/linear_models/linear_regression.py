@@ -92,8 +92,11 @@ class LinearRegression:
         print(f"DEBUG: - X.shape = {X.shape}")
         print(f"DEBUG: - y.shape = {y.shape}")
 
+        # reshape arrays for processing
+        X = X.reshape(-1, 1)
+
         # initialise weights and biases randomly - drawing from a standard Gaussian distribution
-        self.coefficients_ = np.random.normal(loc=0.0, scale=1.0, size=X.shape[0])
+        self.coefficients_ = np.random.normal(loc=0.0, scale=1.0, size=X.shape[1])
         self.intercept_ = np.array([0.])
 
         for epoch in range(self.epochs_):
