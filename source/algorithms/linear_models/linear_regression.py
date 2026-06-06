@@ -89,6 +89,9 @@ class LinearRegression:
         -----
         None
         """
+        print(f"DEBUG: - X.shape = {X.shape}")
+        print(f"DEBUG: - y.shape = {y.shape}")
+
         # initialise weights and biases randomly - drawing from a standard Gaussian distribution
         self.coefficients_ = np.random.normal(loc=0.0, scale=1.0, size=X.shape[0])
         self.intercept_ = np.array([0.])
