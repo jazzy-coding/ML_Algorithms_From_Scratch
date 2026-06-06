@@ -59,7 +59,7 @@ class LinearRegression:
 
     def __init__(
         self,
-        learning_rate: Optional[float] = 0.01,
+        learning_rate: Optional[float] = 0.001,
         epochs: int = 200,
         loss: Callable = mean_squared_error,
         random_state: Optional[int] = 42
