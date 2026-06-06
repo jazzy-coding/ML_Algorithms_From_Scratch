@@ -1,6 +1,5 @@
 """Simple Linear Regression Model"""
 from typing import Callable, Optional
-import logging
 
 import numpy as np
 import numpy.typing as npt
@@ -97,6 +96,7 @@ class LinearRegression:
         for epoch in range(self.epochs_):
             # 1. make predictions using current weights
             preds = self.coefficients_ @ X + self.intercept_
+            print(f"DEBUG: - Preds shape: {preds.shape}")
 
             # 2. compute the loss function with current weights and bias term
             error = self.loss_(y=y, y_hat=preds)
@@ -105,9 +105,9 @@ class LinearRegression:
             self.coefficients_ = self.coefficients_ - (self.learning_rate_ * 2.0 * error)
 
             # 4. log the epoch
-            logging.debug(f"Epoch: {epoch} - Loss: {error}")
+            print(f"DEBUG: - Epoch: {epoch} - Loss: {error}")
 
-        logging.info("Model fitting complete.")
+        print("INFO: - Model fitting complete.")
 
     def predict(self):
         pass
