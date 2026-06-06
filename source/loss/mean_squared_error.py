@@ -55,4 +55,4 @@ def mean_squared_error(
     n = y.shape[0]
     error = (1 / n) * (sum(y - y_hat) ** 2)
 
-    return np.array([error])
+    return error
