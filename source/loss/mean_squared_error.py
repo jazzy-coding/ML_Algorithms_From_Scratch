@@ -41,7 +41,7 @@ def mean_squared_error(
 
     Returns:
     -----------
-    (np.array): (1,) a scalar mean squared error value
+    (np.array): (n,) a column vector of mean squared error values
 
     Raises:
     -----------

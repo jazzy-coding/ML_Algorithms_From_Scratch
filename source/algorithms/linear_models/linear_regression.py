@@ -102,7 +102,7 @@ class LinearRegression:
 
         for epoch in range(self.epochs_):
             # 1. make predictions using current weights
-            preds = self.coefficients_ * X + self.intercept_
+            preds = X.dot(self.coefficients_) + self.intercept_
             print(f"DEBUG: - Preds shape: {preds.shape}")
 
             # 2. compute the loss function with current weights and bias term
@@ -111,7 +111,7 @@ class LinearRegression:
             
             # 3. update the weights using gradient descent
             self.coefficients_ += (self.learning_rate_ * -2.0 * X.T.dot(error)) / X.shape[0]
-            self.intercept_ += (self.learning_rate_ * -2.0 * X.T.dot(error))
+            self.intercept_ += (self.learning_rate_ * -2.0 * np.sum(error))
 
             # 4. log the epoch
             print(f"DEBUG: - Epoch: {epoch} - Loss: {error}")
