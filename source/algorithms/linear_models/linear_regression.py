@@ -5,6 +5,7 @@ import numpy as np
 import numpy.typing as npt
 
 from source.loss.mean_squared_error import mean_squared_error
+from source.exceptions.ModelNotFittedError import ModelNotFittedError
 
 class LinearRegression:
     """Linear Regression Model
@@ -120,12 +121,23 @@ class LinearRegression:
         Parameters:
         -----
         X (np.array): (m, n) - the feature matrix with m features and n data points
-        that the target (y) is to be predicted from
+        that the target (y) is to be predicted from.
 
         Returns:
         -----
-        np.array: (n,) - a column vector of predictions for the target with n data points 
+        np.array: (n,) - a column vector of predictions for the target with n data points. 
+
+        Raises:
+        -----
+        ModelNotFittedError: if 'predict' is called before 'fit'.
         """
-        pass
+        # 1. handle if 'fit' method hasn't been called yet
+
+        # 2. process array dims
+
+        # 3. compute predictions
+        preds = self.coefficients_ @ X + self.intercept_
+
+        return preds
 
     
