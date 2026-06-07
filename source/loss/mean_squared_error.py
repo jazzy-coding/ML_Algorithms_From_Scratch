@@ -1,0 +1,58 @@
+"""Mean Squared Error Loss Function
+
+Formula
+------
+MSE   = (1 / n) * sum(y - y_hat)**2
+OR
+MSE   = (1 / n) * SSE
+
+where
+------
+MSE   = (1,): the scalar mean squared error
+SSE   = (1,): the scalar sum of squared errors [sum(y - y_hat)**2]
+n     = (1,): the number of data points
+y     = (n,): the column vector of size n representing all target values
+y_hat = (n,): the column vector of size n representing all predicted target values
+
+Mean squared error is a common loss function in regression modelling.
+It represents the average (mean) squared distance between the predicted target
+values in a dataset, and the actual target values in a dataset. For this loss function,
+the lower the value is, the better. A mean squared error value of 0.0 would mean
+that the predicted values match the actual values. A perfect fit! Because the error
+is squared, predictions that are far from the target value get heavily penalised.
+"""
+
+import numpy as np
+import numpy.typing as npt
+
+from source.exceptions.DimensionMismatchError import DimensionMismatchError
+
+
+def mean_squared_error(
+    y: npt.NDArray[np.float64], y_hat: npt.NDArray[np.float64]
+) -> npt.NDArray[np.float64]:
+    """
+    Calculate the mean squared error for vectors y and y_hat.
+
+    Parameters:
+    -----------
+    y (np.array): (n,) column vector of size n representing actual prediction target values
+    y_hat (np.array): (n,) column vector of size n representing predicted prediction target values
+
+    Returns:
+    -----------
+    (np.array): (n,) a column vector of mean squared error values
+
+    Raises:
+    -----------
+    (DimensionMismatchError): if y and y_hat have different dimensions, this error gets raised
+    """
+    # check dims first
+    if y.shape != y_hat.shape:
+        raise DimensionMismatchError("y.shape and y_hat.shape must be equal")
+
+    # calculate error
+    n = y.shape[0]
+    error = (1 / (2*n)) * ((y - y_hat) ** 2) # divide by 1/2n to make the math cleaner 
+
+    return error

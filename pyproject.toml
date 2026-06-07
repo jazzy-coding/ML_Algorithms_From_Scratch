@@ -1,0 +1,12 @@
+[project]
+name = "ml-algorithms-from-scratch"
+version = "0.1.0"
+description = "Machine Learning algorithms from the bottom up."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "black>=26.5.1",
+    "numpy>=2.4.6",
+    "pytest>=9.0.3",
+]
+type = "virtual"
