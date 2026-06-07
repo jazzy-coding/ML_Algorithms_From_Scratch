@@ -134,9 +134,10 @@ class LinearRegression:
         # 1. handle if 'fit' method hasn't been called yet
 
         # 2. process array dims
-
+        X = X.reshape(-1, 1)
+        
         # 3. compute predictions
-        preds = self.coefficients_ @ X + self.intercept_
+        preds = self.coefficients_ @ X.T + self.intercept_
 
         return preds
 
