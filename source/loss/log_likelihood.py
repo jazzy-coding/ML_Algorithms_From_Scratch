@@ -30,5 +30,5 @@ def log_likelihood(sigma_Z: npt.NDArray, y: npt.NDArray) -> npt.NDArray:
     -----
     (np.array): - (n,) an array of log likelihood values for n data points
     """
-    return (y * np.log(sigma_Z)) + ((1 - y) * (np.log(1 - sigma_Z)))
+    return -(y * np.log(sigma_Z)) + ((1 - y) * (np.log(1 - sigma_Z))) # add negative sign to use gradient descent rather than gradient ascent
     
