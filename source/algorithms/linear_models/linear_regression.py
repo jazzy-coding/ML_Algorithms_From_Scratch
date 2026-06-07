@@ -113,7 +113,19 @@ class LinearRegression:
 
         print("INFO: - Model fitting complete.")
 
-    def predict(self):
+
+    def predict(self, X: npt.NDArray) -> npt.NDArray:
+        """Predict new values on unseen data using the fitted model.
+
+        Parameters:
+        -----
+        X (np.array): (m, n) - the feature matrix with m features and n data points
+        that the target (y) is to be predicted from
+
+        Returns:
+        -----
+        np.array: (n,) - a column vector of predictions for the target with n data points 
+        """
         pass
 
     
