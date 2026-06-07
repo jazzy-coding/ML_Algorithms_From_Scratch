@@ -59,7 +59,7 @@ class LinearRegression:
 
     def __init__(
         self,
-        learning_rate: Optional[float] = 0.001,
+        learning_rate: Optional[float] = 0.01,
         epochs: int = 200,
         loss: Callable = mean_squared_error,
         random_state: Optional[int] = 42
@@ -70,9 +70,7 @@ class LinearRegression:
         self.learning_rate_ = learning_rate
         self.loss_ = loss
         self.random_state_ = random_state
-
-    def _net_input(self):
-        pass
+        
 
     def fit(self, X: npt.NDArray, y: npt.NDArray) -> None:
         """Fit a simple linear regression model with gradient descent.
@@ -89,15 +87,10 @@ class LinearRegression:
         -----
         None
         """
-        print(f"DEBUG: - X.shape = {X.shape}")
-        print(f"DEBUG: - y.shape = {y.shape}")
-
         # reshape arrays for processing
         X = X.reshape(-1, 1)
         y = y.reshape(-1, 1)
         
-        print(f"DEBUG: - Reshaped X.shape = {X.shape}")
-        print(f"DEBUG: - Reshaped y.shape = {y.shape}")
 
         # initialise weights and biases randomly - drawing from a standard Gaussian distribution
         self.coefficients_ = np.random.normal(loc=0.0, scale=1.0, size=X.shape[1])
@@ -107,15 +100,13 @@ class LinearRegression:
             # 1. make predictions using current weights
             preds = X.dot(self.coefficients_) + self.intercept_
             preds = preds.reshape(-1, 1)
-            print(f"DEBUG: - Preds shape: {preds.shape}")
 
             # 2. compute the loss function with current weights and bias term
             error = self.loss_(y=y, y_hat=preds)
-            print(f"DEBUG: - error.shape: {error.shape}")
             
             # 3. update the weights using gradient descent
-            self.coefficients_ = self.coefficients_ + (self.learning_rate_ * -2.0 * X.T.dot(error)) / X.shape[0]
-            self.intercept_ = self.intercept_ + (self.learning_rate_ * -2.0 * np.sum(error)) / X.shape[0]
+            self.coefficients_ = self.coefficients_ + (self.learning_rate_ * 2.0 * X.T.dot(error)) / X.shape[0]
+            self.intercept_ = self.intercept_ + (self.learning_rate_ * 2.0 * np.sum(error)) / X.shape[0]
 
             # 4. log the epoch
             print(f"DEBUG: - Epoch: {epoch} - Loss: {np.sum(error)}")
