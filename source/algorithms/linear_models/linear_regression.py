@@ -65,6 +65,9 @@ class LinearRegression:
         loss: Callable = mean_squared_error,
         random_state: Optional[int] = 42
     ) -> None:
+        if loss != mean_squared_error:
+            raise NotImplementedError("Only mean squared error works at the moment. Other loss functions coming soon.")
+
         self.coefficients_ = None
         self.intercept_ = None
         self.epochs_ = epochs
@@ -131,12 +134,10 @@ class LinearRegression:
         -----
         ModelNotFittedError: if 'predict' is called before 'fit'.
         """
-        # 1. handle if 'fit' method hasn't been called yet
-
-        # 2. process array dims
+        # 1. process array dims
         X = X.reshape(-1, 1)
         
-        # 3. compute predictions
+        # 2. compute predictions
         preds = self.coefficients_ @ X.T + self.intercept_
 
         return preds
